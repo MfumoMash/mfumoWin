@@ -19,11 +19,7 @@ RUN refreshenv
 RUN echo 'TRYING TO CONFIRM WHETHER I AM IN THE CORRECT WORKING DIRECTORY'
 RUN dir
 
-RUN echo 'WHAT SHOULD OCCUR WHEN THE INSTANCE OF THE IMAGE IS RUNNING'
-RUN choco install minikube -Y
-WORKDIR C:/ProgramData/chocolatey/lib/kubernetes-cli/tools/kubernetes/client/bin
-RUN refreshenv
-RUN dir
 
+RUN echo 'WHAT SHOULD OCCUR WHEN THE INSTANCE OF THE IMAGE IS RUNNING'
 ENTRYPOINT ["minikube","start"]
 
