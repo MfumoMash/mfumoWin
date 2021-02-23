@@ -10,7 +10,7 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  image: 'mfumo/mfumowin'
+  image: 'mfumo/win.$(build.buildid)'
   connection: 'docker-connection'
 
 steps:
@@ -23,7 +23,7 @@ steps:
     inputs:
       command: push
       containerRegistry: $(connection)
-      repository: 'win'
+      repository: $(image)
       Dockerfile: '**/Dockerfile'
       tags: 'v.$(build.buildid)'
 
