@@ -1,0 +1,34 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  image: 'mfumo/mfumowin.$(build.buildid)'
+  connection: 'docker-connection'
+
+steps:
+  - task: Docker@0
+    displayName: 'Building an image'
+    inputs:
+      containerregistrytype: 'Container Registry'
+      dockerRegistryConnection: connection
+      imageName: image
+
+steps:
+  - task: Docker@0
+    displayName: 'Pushing container to registry'
+    inputs:
+      containerregistrytype: 'Container Registry'
+      dockerRegistryConnection: 'connection'
+      action: 'Push an image'
+      imageName: image
+
+
+
