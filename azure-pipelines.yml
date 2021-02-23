@@ -23,6 +23,7 @@ steps:
     inputs:
       command: push
       containerRegistry: $(connection)
+      repository: 'win'
       Dockerfile: '**/Dockerfile'
       tags: 'v.$(build.buildid)'
 
