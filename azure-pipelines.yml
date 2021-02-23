@@ -16,7 +16,6 @@ variables:
 steps:
   - task: Docker@2
     inputs:
-      repository: $(name)
       command: build
       Dockerfile: '**/Dockerfile'
 
