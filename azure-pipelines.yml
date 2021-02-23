@@ -21,7 +21,7 @@ steps:
       dockerRegistryConnection: connection
       imageName: image
 
-steps:
+
   - task: Docker@0
     displayName: 'Pushing container to registry'
     inputs:
