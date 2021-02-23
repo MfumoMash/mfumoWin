@@ -18,6 +18,13 @@ steps:
     inputs:
       command: build
       Dockerfile: '**/Dockerfile'
+  
+  - task: Docker@2
+    inputs:
+      command: push
+      containerRegistry: $(connection)
+      Dockerfile: '**/Dockerfile'
+      tags: 'v.$(build.buildid)'
 
 
 
