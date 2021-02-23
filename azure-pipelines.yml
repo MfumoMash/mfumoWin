@@ -10,25 +10,15 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  image: 'mfumo/mfumowin.$(build.buildid)'
+  image: 'mfumo/mfumowin'
   connection: 'docker-connection'
 
 steps:
-  - task: Docker@0
-    displayName: 'Building an image'
+  - task: Docker@2
     inputs:
-      containerregistrytype: 'Container Registry'
-      dockerRegistryConnection: connection
-      imageName: image
-
-
-  - task: Docker@0
-    displayName: 'Pushing container to registry'
-    inputs:
-      containerregistrytype: 'Container Registry'
-      dockerRegistryConnection: 'connection'
-      action: 'Push an image'
-      imageName: image
+      repository: $(name)
+      command: build
+      Dockerfile: '**/Dockerfile'
 
 
 
